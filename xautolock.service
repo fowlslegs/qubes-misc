@@ -1,0 +1,14 @@
+[Unit]
+Description=Lock the screen automatically after a timeout
+
+[Service]
+Type=simple
+User=<username>
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/xautolock -time 10 -corners 000- -locker "/usr/local/bin/physlock -ds -u root"
+-detectsleep
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=graphical.target
